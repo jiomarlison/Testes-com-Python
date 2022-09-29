@@ -14,12 +14,12 @@ janela.maxsize(300, 400)
 
 
 def dados_do_ponto():
-    if entry_matricula.get() != "":
-        matricula = entry_matricula.get()
-        data_e_hora = dt.datetime.now()
-        data_e_hora = data_e_hora.strftime("%d/%m/%Y - %H:%M:%S")
-        tipo = entrada_ou_saida.get()
-        lista_dados = [matricula, data_e_hora, tipo]
+    matricula = entry_matricula.get()
+    data_e_hora = dt.datetime.now()
+    data_e_hora = data_e_hora.strftime("%d/%m/%Y - %H:%M:%S")
+    tipo = entrada_ou_saida.get()
+    lista_dados = [matricula, data_e_hora, tipo]
+    print(lista_dados)
 
 
 label_descricao = tk.Label(text="Número da Matricula", font="Arial")
