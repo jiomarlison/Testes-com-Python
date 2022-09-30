@@ -97,4 +97,3 @@ def atualizar_registros():
                                     where nome = 'NILO'""")
     conexao.commit()
 
-
