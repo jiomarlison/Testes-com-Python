@@ -96,4 +96,3 @@ def atualizar_registros():
                                     set telefone = '12345-6789'
                                     where nome = 'NILO'""")
     conexao.commit()
-
