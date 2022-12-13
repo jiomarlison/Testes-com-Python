@@ -1,6 +1,5 @@
 from Arquivo.lib.menu import *
-
-
+from datetime import *
 def arqExist(nome):
     try:
         abrir = open(nome, 'rt')
@@ -31,19 +30,20 @@ def lerArquivo(nome_arquivo):
         for linha in ler:
             dado = linha.split(';')
             dado[1] = dado[1].replace('\n',' ')
-            print(f'{dado[0]:<29}{dado[1]:>3}')
+            print(f'{dado[0]:<20}{dado[1]:>5}{dado[2]:>10}')
     finally:
         ler.close()
 
 
 def cadastrar(nome_arquivo, nome='desconhecido', matricula=0):
+    agora = datetime.now().strftime("%d/%m/%Y-%H:%M:%S")
     try:
         inserir = open(nome_arquivo, 'at')
     except:
         print('\033[31mERRO!\033[m: Não foi possivel abrir o arquivo!')
     else:
         try:
-            inserir.write(f' Nome: {nome}; Matricula: {matricula};\n')
+            inserir.write(f'Nome: {nome}; Matricula: {matricula}; Data de Registro: {agora} \n')
         except:
             print('\033[31mERRO!\033[m: Não foi possivel inserir a informação!')
         else:

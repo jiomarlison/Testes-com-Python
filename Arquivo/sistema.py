@@ -18,6 +18,8 @@ while True:
         break
     elif resposta == 1:
         print('\033[31m-->>\033[m', LISTA_OPCOES[1])
+        nome_arquivo = str(input('Digite o nome do arquivo a ser criado: '))
+        criarArquivo(f'{nome_arquivo}.txt')
     elif resposta == 2:
         # Ler informações do arquivo!
         lerArquivo(arquivo)
