@@ -1,2 +1,0 @@
-Nome: marlin; Matricula: 123; Data de Registro: 07/12/2022-16:12:41 
-Nome: li; Matricula: 456; Data de Registro: 07/12/2022-16:12:46 

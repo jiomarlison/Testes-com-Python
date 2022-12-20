@@ -1,5 +1,7 @@
 from Arquivo.lib.menu import *
 from datetime import *
+
+
 def arqExist(nome):
     try:
         abrir = open(nome, 'rt')
@@ -12,7 +14,8 @@ def arqExist(nome):
 
 def criarArquivo(nome_arquivo):
     try:
-        criar = open(nome_arquivo, 'wt+')
+        criar = open(f'C://Users//Secretaria//PycharmProjects//Testes-com-Python//Arquivo//arquivos//{nome_arquivo}',
+                     'wt+')
         criar.close()
     except:
         print('\033[31mERRO!\033[m: Não foi possivel criar o arquivo!\033[m')
@@ -29,7 +32,7 @@ def lerArquivo(nome_arquivo):
         cabecalho('INFORMAÇÕES CADASTRADAS')
         for linha in ler:
             dado = linha.split(';')
-            dado[1] = dado[1].replace('\n',' ')
+            dado[1] = dado[1].replace('\n', ' ')
             print(f'{dado[0]:<20}{dado[1]:>5}{dado[2]:>10}')
     finally:
         ler.close()
