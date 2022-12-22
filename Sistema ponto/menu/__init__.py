@@ -10,8 +10,6 @@ def leiaInt(msg):
             return 0
         else:
             return n
-
-
 def linha(tam=42):
     return '\033[32m=\033[m' * tam
 
@@ -24,10 +22,6 @@ def cabecalho(txt):
 
 def menu(lista):
     cabecalho('MENU PRINCIPAL')
-    c = 0
-    for resultado in lista:
-        print(f'\033[33m{c}\033[m - \033[34m{resultado}\033[m')
-        c += 1
     print(linha())
     opc = leiaInt('\033[36mSua opção: \033[m')
     return opc
