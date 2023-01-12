@@ -14,3 +14,5 @@ while x < len(notas):
     x += 1
 
 print(f'Méia: {soma / x:5.2f}')
+
+#%%
