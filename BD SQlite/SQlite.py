@@ -4,24 +4,10 @@ def criar_tabela():
     cursor = conexao.cursor()
 
     cursor.execute('''
-        CREATE TABLE agenda(
+        CREATE TABLE agenda (
         nome text,
         telefone text)
     ''')
-    cursor.close()
-    conexao.close()
-
-
-def inserir_dados_tabela():
-    import sqlite3
-    conexao = sqlite3.connect("agenda.db")
-    cursor = conexao.cursor()
-
-    cursor.execute('''
-        insert into agenda(nome, telefone)
-            values(?,?)
-            ''', ("NILO", "7788-1432"))
-    conexao.commit()
     cursor.close()
     conexao.close()
 
@@ -35,23 +21,6 @@ def consulta_dados_agenda():
     resultado = cursor.fetchone()
     print(f"Nome: {resultado[0]}\nTelefone: {resultado[1]}\n")
 
-    cursor.close()
-    conexao.close()
-
-
-def inserir_dados_com_lista():
-    import sqlite3
-    conexao = sqlite3.connect("agenda.db")
-    cursor = conexao.cursor()
-
-    dados = [("João", "98901-0109"),
-             ("André", "98902-8900"),
-             ("Maria", "97891-3321")]
-    cursor.executemany('''
-        insert into agenda (nome, telefone)
-        values (?,?)
-        ''', dados)
-    conexao.commit()
     cursor.close()
     conexao.close()
 
@@ -86,6 +55,37 @@ def consulta_registro_por_registro():
     conexao.close()
 
 
+def inserir_dados_tabela():
+    import sqlite3
+    conexao = sqlite3.connect("agenda.db")
+    cursor = conexao.cursor()
+
+    cursor.execute('''
+        insert into agenda(nome, telefone)
+            values(?,?)
+            ''', ("NILO", "7788-1432"))
+    conexao.commit()
+    cursor.close()
+    conexao.close()
+
+
+def inserir_dados_com_lista():
+    import sqlite3
+    conexao = sqlite3.connect("agenda.db")
+    cursor = conexao.cursor()
+
+    dados = [("João", "98901-0109"),
+             ("André", "98902-8900"),
+             ("Maria", "97891-3321")]
+    cursor.executemany('''
+        insert into agenda (nome, telefone)
+        values (?,?)
+        ''', dados)
+    conexao.commit()
+    cursor.close()
+    conexao.close()
+
+
 def atualizar_registros():
     import sqlite3
     from contextlib import closing
@@ -96,3 +96,6 @@ def atualizar_registros():
                                     set telefone = '12345-6789'
                                     where nome = 'NILO'""")
     conexao.commit()
+
+
+
