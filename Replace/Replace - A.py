@@ -45,7 +45,11 @@ def ajustar_texto(novo_texto, maiusc=False):
 
 def menu():
     import time
-    lista_opcoes = ['=*=*=\033[36mLISTA DE OPÇÕES\033[m=*=*=\n', '\033[29m 0 - ENCERRAR\033[m\n', '\033[32m 1 - ESCREVER UMA FRASE\033[m\n', '\033[33m 2 - VER UM EXEMPLO\033[m']
+    lista_opcoes = ['=*=*=\033[36mLISTA DE OPÇÕES\033[m=*=*=\n',
+                    '\033[29m 0 - ENCERRAR\033[m\n',
+                    '\033[32m 1 - ESCREVER UMA FRASE\033[m\n',
+                    '\033[33m 2 - VER UM EXEMPLO\033[m',
+                    ]
     while True:
         print(f'{lista_opcoes[0]}{lista_opcoes[1]}{lista_opcoes[2]}{lista_opcoes[3]}')
         opcao = int(input('\033[34mEscolha sua opção: \033[m'))
