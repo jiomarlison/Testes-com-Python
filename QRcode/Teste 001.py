@@ -15,5 +15,9 @@ for x in range(2):
 
     imagem_qr = qrcode.make(codigo_produto)
     imagem_qr.save(F'{x}-CODIGO QR - UVA.PNG')
+
+    agora = datetime.now().strftime('%d%m%Y%H%M%S')
+    imagem_qr2 = qrcode.make(agora)
+    imagem_qr2.save(F'{x}-CODIGO QR 2 - UVA.PNG')
+
     import time
-    time.sleep(10)
