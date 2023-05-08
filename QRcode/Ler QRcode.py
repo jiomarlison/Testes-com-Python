@@ -1,7 +1,5 @@
 import random
-import time
 import cv2
-import numpy as np
 from pyzbar.pyzbar import decode
 import sqlite3
 from contextlib import closing
@@ -31,8 +29,7 @@ while True:
                         for registro in resultado:
                             print(f'BANCO DE DADOS - Codigo: {registro[0]}, Peso: {registro[1]:5.3f}')
 
-
-    cv2.imshow('Imagem', img)
-    cv2.waitKey(1)
+    cv2.imshow('FRUIT FLOW', img)
+    cv2.waitKey(27)
 
 captura.release()
