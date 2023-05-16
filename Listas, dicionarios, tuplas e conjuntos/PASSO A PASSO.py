@@ -2,7 +2,7 @@ import random
 
 lista = []
 
-for x in range(random.randint(1, 15)):
+for x in range(random.randint(10, 25)):
     lista.append(x)
 
 print(lista)
