@@ -15,9 +15,9 @@ else:
         ultimo = termo
         count += 1
         lista.append(termo)
-print(lista)
+
 ultimo_text = str(lista[-1])
 if ultimo_text[-2:] == '02':
     print(2)
 else:
-    print(f'\n{n}º elemento: {ultimo_text}\nDois ultimos digitos: {ultimo_text[-2:]}')
+    print(f'\n{n}º elemento: {ultimo_text}\nDois ultimos digitos: {ultimo_text[-2]} e {ultimo_text[-1]}')
