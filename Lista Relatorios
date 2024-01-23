@@ -1,0 +1,61 @@
+import datetime
+
+import pandas as pd
+from docx import *
+
+ano = datetime.datetime.today().year
+
+dias_ano = pd.date_range(
+    start=f"01/01/{ano}",
+    end=f"12/31/{ano}"
+)
+
+calendario = (pd.DataFrame(
+    data={
+        "Data": dias_ano.strftime("%d/%m/%Y"),
+        "Dia da Semana": dias_ano.strftime("%A"),
+        "Nº da Semana": dias_ano.strftime("%U")
+    }
+).replace(
+    {
+        "Sunday": "Domingo",
+        "Monday": "Segunda - Feira",
+        "Tuesday": "Terça - Feira",
+        "Wednesday": "Quarta - Feira",
+        "Thursday": "Quinta - Feira",
+        "Friday": "Sexta - Feira",
+        "Saturday": "Sábado",
+
+    }
+)
+)
+
+calendario = calendario.loc[calendario["Dia da Semana"] != "Sábado"]
+calendario = calendario.loc[calendario["Dia da Semana"] != "Domingo"]
+calendario = pd.DataFrame(calendario)
+
+for n_semana in calendario['Nº da Semana'].drop_duplicates():
+    datas_relatorio = list(calendario.loc[calendario["Nº da Semana"] == n_semana]["Data"])
+    documento = Document()
+
+    documento.add_heading(f"Relatório Semanal - {int(n_semana) + 1}")
+    documento.add_heading(f"Data {datas_relatorio[0]}  - {datas_relatorio[-1]}")
+    documento.add_heading(f"")
+    if int(n_semana) > 3:
+        break
+    for dia in datas_relatorio:
+        cabecalho_data = documento.add_paragraph("")
+        cabecalho_data.add_run(
+            f"""{calendario.loc[calendario["Data"] == dia]
+            ["Dia da Semana"].values[0]} ({dia}):"""
+        ).bold = True
+        cabecalho_atividade = documento.add_paragraph("")
+        cabecalho_atividade.add_run(
+            "Atividades Realizadas:"
+        ).bold = True
+        documento.add_heading(f"")
+
+    datas_relatorio = (f"{str(datas_relatorio[0][:5]).replace('/', '.')} "
+                       f"à {str(datas_relatorio[-1][:5]).replace('/', '.')} "
+                       f"de {ano}")
+    documento.save(f'Rel. Semanal {datas_relatorio}.docx')
